@@ -1,0 +1,8 @@
+# Direkte PDF-Links zu den Geschäftsberichten. Manuell gepflegt, nicht gecrawlt.
+# Titel ohne Eintrag nutzen nur yfinance.
+# statements_lang: Sprache der Konzernrechnung im PDF (en | de | fr)
+reports:
+  NESN.SW:
+    fiscal_year: 2025
+    url:            # TODO: PDF-Link von der Nestlé IR-Seite eintragen
+    statements_lang: en

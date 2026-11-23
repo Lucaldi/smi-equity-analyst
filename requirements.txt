@@ -1,0 +1,26 @@
+# Agenten
+langgraph>=0.2.0
+langchain>=0.2.0
+langchain-openai>=0.1.0
+langchain-anthropic>=0.1.0
+
+# Daten
+yfinance>=0.2.40
+finnhub-python>=2.4.19
+pandas>=2.0.0
+pyyaml>=6.0
+python-dotenv>=1.0.0
+pydantic>=2.0.0
+
+# NLP / Sentiment (Training in Colab, Inferenz lokal auf CPU möglich)
+scikit-learn>=1.4.0
+transformers>=4.40.0
+datasets>=2.19.0
+torch>=2.2.0
+
+# Auswertung
+matplotlib>=3.8.0
+seaborn>=0.13.0
+
+# Tests
+pytest>=8.0.0

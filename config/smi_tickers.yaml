@@ -1,0 +1,27 @@
+# SMI-Zusammensetzung (Stand MarketScreener, Nov. 2026) – vor erstem Lauf mit yfinance prüfen
+index: SMI
+tickers:
+  ROG.SW: Roche
+  NOVN.SW: Novartis
+  NESN.SW: Nestlé
+  ABBN.SW: ABB
+  UBSG.SW: UBS
+  CFR.SW: Richemont
+  ZURN.SW: Zurich Insurance
+  SREN.SW: Swiss Re
+  LONN.SW: Lonza
+  GALD.SW: Galderma
+  GIVN.SW: Givaudan
+  HOLN.SW: Holcim
+  SDZ.SW: Sandoz
+  SIKA.SW: Sika
+  ALC.SW: Alcon
+  SLHN.SW: Swiss Life
+  GEBN.SW: Geberit
+  AMRZ.SW: Amrize
+  PGHN.SW: Partners Group
+  LOGN.SW: Logitech
+
+news:
+  lookback_days: 90
+  max_items: 20
