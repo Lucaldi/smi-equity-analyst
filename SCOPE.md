@@ -17,7 +17,8 @@ Ein Multi-Agenten-System (MAS) analysiert ein Unternehmen aus dem SMI anhand sei
 - Universum: die 20 SMI-Titel (Stand prüfen vor Abgabe)
 - Datenquellen: Kennzahlen via `yfinance`, News via News-API (z. B. Finnhub / yfinance-News)
 - Agenten: Fundamental, News, Supervisor (siehe Architektur)
-- NLP-Komponente: News-Sentiment-Klassifikation mit Modellvergleich
+- NLP-Komponente: News-Sentiment-Klassifikation mit Modellvergleich (ohne eigenes Training, nur Inferenz)
+- Betrieb: alles lokal auf CPU (keine GPU, kein Colab); Docling-Ergebnisse und Sentiment-Vorhersagen als JSON-Cache in `data/cache/`
 - Evaluation: quantitativer Vergleich der Varianten (siehe Kapitel 5)
 - Output: Memo als JSON + Markdown
 
@@ -48,7 +49,7 @@ Ein Multi-Agenten-System (MAS) analysiert ein Unternehmen aus dem SMI anhand sei
 | # | Frage | Metrik | Erfolgskriterium |
 |---|---|---|---|
 | H1 | Extrahiert der Fundamental-Agent die Kennzahlen korrekt aus den Geschäftsberichten? | Anteil Kennzahlen mit Abweichung ≤ 2 % zu yfinance | ≥ 90 % |
-| H2 | Welches Modell bewertet News-Sentiment am besten? | Macro-F1 auf Financial PhraseBank und eigenen SMI-Headlines | FinBERT > TF-IDF-Baseline |
+| H2 | Welches Modell bewertet News-Sentiment am besten? | Macro-F1, Kosten und Latenz pro Headline, Konsistenz auf ca. 150 eigenen SMI-Headlines | Standard-LLM (V2 oder V3) Macro-F1 ≥ FinBERT (V1) |
 | H3 | Ist das Multi-Agenten-System faktentreuer als ein Single-Agent? | Anteil korrekter Zahlen im Memo | MAS > Single-Agent |
 | H4 | Liefert das System konsistente Urteile? | Gleiches Gesamturteil in 3 Läufen pro Titel | ≥ 80 % der Titel |
 | H5 | Ist das System praxistauglich? | Laufzeit und Kosten pro Analyse | < 5 min, < 0.50 CHF |
@@ -84,20 +85,30 @@ Die Schwellenwerte sind Zielwerte. Werden sie verfehlt, wird das im Bericht anal
 
 ## 4. NLP-Komponente: News-Sentiment
 
-Die Bewertung jeder News (positiv / neutral / negativ) ist der zentrale NLP-Baustein des News-Agents. Verglichen werden:
+Die Bewertung jeder News (positiv / neutral / negativ) ist der zentrale NLP-Baustein des News-Agents.
+**Es wird kein Modell trainiert oder fine-getuned.** Standard im News-Agent ist ein LLM via API;
+der Anbieter (OpenAI oder Claude) ist über `.env` wählbar. Für H2 verglichen werden:
 
-| Variante | Modell |
-|---|---|
-| V1 | TF-IDF + Logistic Regression (Baseline) |
-| V2 | FinBERT (`ProsusAI/finbert`), fine-getuned |
-| V3 | LLM Zero-shot (Prompt im News-Agent) |
+| Variante | Modell | Art |
+|---|---|---|
+| V1 | FinBERT (`ProsusAI/finbert`) | vortrainiert, nur Inferenz (lokal, CPU) |
+| V2 | OpenAI | Zero-shot |
+| V3 | Claude | Zero-shot |
+| V4 (optional) | bestes LLM aus V2/V3 | Few-shot |
 
-**Daten:**
-- Training/Test: Financial PhraseBank (3 Klassen, expertengelabelt)
-- Zusätzlicher Test: ca. 200 selbst gelabelte Headlines zu SMI-Titeln (Domain-Transfer)
+**Testset:** ca. 150 selbst gelabelte Headlines zu SMI-Titeln in `nlp/label_smi_headlines.csv`.
+Financial PhraseBank wird bewusst **nicht** verwendet: FinBERT wurde darauf trainiert, ein Test
+darauf wäre Data Leakage und würde V1 bevorteilen.
 
-**Metriken:** Macro-F1, Confusion Matrix, Latenz und Kosten pro News.
-Das beste Modell wird als Tool im News-Agent eingesetzt.
+**Metriken:**
+- Macro-F1 (zusätzlich Confusion Matrix)
+- Kosten pro Headline (API-Tokens; FinBERT lokal = 0)
+- Latenz pro Headline
+- Konsistenz: Anteil Headlines mit identischem Label über wiederholte Läufe
+
+Der Vergleich läuft mit `python -m nlp.compare_sentiment`, Resultate in `eval/results/`.
+Sentiment-Vorhersagen werden als JSON in `data/cache/` gecacht, damit wiederholte Läufe
+reproduzierbar sind und keine zusätzlichen API-Kosten verursachen.
 
 ## 5. Evaluation des MAS
 
@@ -140,7 +151,7 @@ smi-equity-analyst/
 │   ├── state.py
 │   └── graph.py
 ├── nlp/
-│   ├── train_sentiment.ipynb   # V1–V3, Colab
+│   ├── compare_sentiment.py    # Vergleich V1–V4 (lokal, CPU)
 │   └── label_smi_headlines.csv
 ├── eval/
 │   ├── run_eval.py             # Variante A vs. B
@@ -167,7 +178,7 @@ Jeder Graph-Knoten protokolliert Start, Tool-Aufrufe, Zwischenergebnis und Dauer
 |---|---|
 | Mo 23.11. | Repo auf GitHub, VS Code + Claude Code eingerichtet |
 | Di 24.11. | Fundamental-Agent für Nestlé end-to-end (PDF → Docling → Kennzahlen → Validierung) |
-| Mi 25.11. | News-Agent + Sentiment-Vergleich (TF-IDF, FinBERT, LLM) |
+| Mi 25.11. | News-Agent, SMI-Headlines labeln, Sentiment-Vergleich (FinBERT, OpenAI, Claude) |
 | Do 26.11. | Supervisor, End-to-End-Lauf, Single-Agent-Baseline; Skalierung auf 5 Titel mit PDF, Rest via yfinance |
 | Fr 27.11. | Evaluation, Resultate, Grafiken |
 | Sa 28.11. | Bericht (docs/BERICHT.md), Video aufnehmen |

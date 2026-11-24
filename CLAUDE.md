@@ -24,6 +24,20 @@ Details: `SCOPE.md`. Fortschritt: `DEVLOG.md`.
 2. Seiten der Konzernrechnung per Stichwort finden (DE/EN), nur diese mit **Docling** parsen
 3. Mapping auf Standardschema, Validierung gegen `yfinance` (Abweichung > 2 % markieren)
 4. Fallback: Titel ohne PDF-Eintrag nutzen nur `yfinance`
+5. Docling-Ergebnisse werden als JSON in `data/cache/` gecacht (kein erneutes Parsen)
+
+## News-Sentiment
+- **Kein Training, kein Fine-tuning.** Standard im News-Agent: LLM via API, Anbieter (OpenAI oder
+  Claude) wählbar über `.env` (`SENTIMENT_BACKEND`, `SENTIMENT_LLM_PROVIDER`).
+- Vergleich für H2 in `nlp/compare_sentiment.py`: V1 FinBERT `ProsusAI/finbert` (vortrainiert, nur
+  Inferenz), V2 OpenAI Zero-shot, V3 Claude Zero-shot, V4 optional Few-shot.
+- Testset: ca. 150 selbst gelabelte SMI-Headlines in `nlp/label_smi_headlines.csv`.
+  **Nicht** Financial PhraseBank (FinBERT wurde darauf trainiert → Data Leakage).
+- Metriken: Macro-F1, Kosten und Latenz pro Headline, Konsistenz über wiederholte Läufe.
+- Sentiment-Vorhersagen werden als JSON in `data/cache/` gecacht.
+
+## Laufzeitumgebung
+Alles läuft lokal auf CPU (kein GPU, kein Colab). PyTorch als CPU-Version installieren (siehe `README.md`).
 
 ## Abgabe
 Git-Repo mit Code, `docs/BERICHT.md`, Resultaten in `eval/results/` und kurzem Video.
@@ -33,6 +47,7 @@ Deshalb Pflicht: jeder Graph-Knoten loggt Start, Tool-Aufrufe, Zwischenergebnis 
 ## Befehle
 - `python main.py --ticker NESN.SW --trace`
 - `python -m eval.run_eval`
+- `python -m nlp.compare_sentiment`
 - `pytest`
 
 ## Nicht tun

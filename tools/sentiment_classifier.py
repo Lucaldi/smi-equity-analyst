@@ -1,10 +1,12 @@
 """Sentiment-Klassifikation einzelner News: positive / neutral / negative.
 
-Backend per SENTIMENT_BACKEND (.env) wählbar, damit die Varianten V1–V3
-im selben Agenten verglichen werden können:
-    tfidf   – TF-IDF + Logistic Regression
-    finbert – fine-getuntes FinBERT
-    llm     – LLM Zero-shot
+Kein Training: alle Backends nutzen vortrainierte Modelle bzw. APIs (nur Inferenz).
+Backend per SENTIMENT_BACKEND (.env) wählbar:
+    llm     – LLM Zero-/Few-shot via API (Standard); Anbieter per
+              SENTIMENT_LLM_PROVIDER: openai | anthropic
+    finbert – ProsusAI/finbert, vortrainiert, lokal auf CPU
+
+Vorhersagen werden als JSON in data/cache/ gecacht (Schlüssel: Backend, Modell, Headline).
 """
 from __future__ import annotations
 
