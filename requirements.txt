@@ -7,10 +7,12 @@ langchain-anthropic>=0.1.0
 # Daten
 yfinance>=0.2.40
 finnhub-python>=2.4.19
+tavily-python>=0.5.0    # News von Qualitätsmedien (zweite Quelle neben yfinance)
 pandas>=2.0.0
 pyyaml>=6.0
 python-dotenv>=1.0.0
 pydantic>=2.0.0
+docling>=2.0.0          # Tabellen aus Geschäftsbericht-PDFs
 
 # NLP / Sentiment (nur Inferenz, lokal auf CPU)
 # torch vorher als CPU-Version installieren, siehe README.md

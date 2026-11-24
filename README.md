@@ -36,6 +36,7 @@ python -c "import torch; print(torch.__version__, torch.cuda.is_available())"
 
 | Variable | Bedeutung |
 |---|---|
+| `TAVILY_API_KEY` | News von Qualitätsmedien (Reuters, Bloomberg, FT …); leer = nur yfinance |
 | `LLM_PROVIDER`, `LLM_MODEL` | LLM für die Agenten (`openai` \| `anthropic`) |
 | `SENTIMENT_BACKEND` | `llm` (Standard) oder `finbert` |
 | `SENTIMENT_LLM_PROVIDER` | Anbieter für das Sentiment-LLM: `openai` \| `anthropic` |

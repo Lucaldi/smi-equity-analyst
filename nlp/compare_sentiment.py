@@ -7,7 +7,8 @@ Varianten:
     V4 – Few-shot mit dem besseren LLM aus V2/V3 (optional)
 
 Testset: ca. 150 selbst gelabelte SMI-Headlines in nlp/label_smi_headlines.csv
-(Spalten: text, ticker, date, source, label). Financial PhraseBank wird nicht verwendet,
+(Spalten: text, ticker, date, source, url, label; gesammelt mit nlp/collect_headlines.py,
+von Hand gelabelt gemäss nlp/LABELING.md). Financial PhraseBank wird nicht verwendet,
 weil FinBERT darauf trainiert wurde (Data Leakage).
 
 Metriken: Macro-F1 (+ Confusion Matrix), Kosten und Latenz pro Headline, Konsistenz

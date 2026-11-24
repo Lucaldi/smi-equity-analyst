@@ -15,7 +15,7 @@ Ein Multi-Agenten-System (MAS) analysiert ein Unternehmen aus dem SMI anhand sei
 
 ### In Scope
 - Universum: die 20 SMI-Titel (Stand prüfen vor Abgabe)
-- Datenquellen: Kennzahlen via `yfinance`, News via News-API (z. B. Finnhub / yfinance-News)
+- Datenquellen: Kennzahlen via `yfinance`, News via yfinance (ohne Bewertungs-Blogs) und Tavily (nur englischsprachige Qualitätsmedien wie Reuters, Bloomberg, FT); Finnhub liefert für Schweizer Titel im Gratis-Zugang keine News
 - Agenten: Fundamental, News, Supervisor (siehe Architektur)
 - NLP-Komponente: News-Sentiment-Klassifikation mit Modellvergleich (ohne eigenes Training, nur Inferenz)
 - Betrieb: alles lokal auf CPU (keine GPU, kein Colab); Docling-Ergebnisse und Sentiment-Vorhersagen als JSON-Cache in `data/cache/`

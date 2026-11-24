@@ -26,6 +26,11 @@ Details: `SCOPE.md`. Fortschritt: `DEVLOG.md`.
 4. Fallback: Titel ohne PDF-Eintrag nutzen nur `yfinance`
 5. Docling-Ergebnisse werden als JSON in `data/cache/` gecacht (kein erneutes Parsen)
 
+## News-Quellen
+- `tools/news_fetcher.fetch_news`: yfinance (ohne `LOW_QUALITY_SOURCES`) + Tavily (nur `TRUSTED_DOMAINS`, Englisch).
+- News-Agent und Sentiment-Testset (`nlp/collect_headlines.py`) nutzen dieselbe Funktion.
+- Nur englische Headlines (FinBERT ist ein englisches Modell).
+
 ## News-Sentiment
 - **Kein Training, kein Fine-tuning.** Standard im News-Agent: LLM via API, Anbieter (OpenAI oder
   Claude) wählbar über `.env` (`SENTIMENT_BACKEND`, `SENTIMENT_LLM_PROVIDER`).
