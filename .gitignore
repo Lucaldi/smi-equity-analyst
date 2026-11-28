@@ -23,8 +23,7 @@ models/
 *.bin
 
 # Laufzeit-Output
-eval/results/*
-!eval/results/.gitkeep
+eval/results/traces/*.tmp
 history/
 
 # OS / IDE

@@ -1,0 +1,125 @@
+[
+  {
+    "variant": "V1",
+    "description": "FinBERT (ProsusAI/finbert)",
+    "n": 146,
+    "runs": 3,
+    "macro_f1_mean": 0.7474596391263058,
+    "macro_f1_std": 0.0,
+    "macro_f1_runs": [
+      0.7474596391263058,
+      0.7474596391263058,
+      0.7474596391263058
+    ],
+    "accuracy_mean": 0.7397260273972602,
+    "consistency": 1.0,
+    "latency_mean_s": 0.022515525114155253,
+    "latency_median_s": 0.0221,
+    "cost_per_headline_chf": 0.0,
+    "invalid_answers": 0,
+    "f1_per_class": {
+      "positive": 0.7692307692307693,
+      "neutral": 0.6481481481481481,
+      "negative": 0.825
+    },
+    "confusion_matrix": [
+      [
+        40,
+        4,
+        0
+      ],
+      [
+        20,
+        35,
+        11
+      ],
+      [
+        0,
+        3,
+        33
+      ]
+    ]
+  },
+  {
+    "variant": "V2",
+    "description": "OpenAI Zero-shot",
+    "n": 146,
+    "runs": 3,
+    "macro_f1_mean": 0.7888029333681508,
+    "macro_f1_std": 0.004235657296346223,
+    "macro_f1_runs": [
+      0.7912483912483913,
+      0.7839120176076698,
+      0.7912483912483913
+    ],
+    "accuracy_mean": 0.771689497716895,
+    "consistency": 0.9794520547945206,
+    "latency_mean_s": 0.7315232876712329,
+    "latency_median_s": 0.6564,
+    "cost_per_headline_chf": 2.3926027397260273e-05,
+    "invalid_answers": 0,
+    "f1_per_class": {
+      "positive": 0.7567567567567568,
+      "neutral": 0.7027027027027027,
+      "negative": 0.9142857142857143
+    },
+    "confusion_matrix": [
+      [
+        42,
+        2,
+        0
+      ],
+      [
+        25,
+        39,
+        2
+      ],
+      [
+        0,
+        4,
+        32
+      ]
+    ]
+  },
+  {
+    "variant": "V3",
+    "description": "OpenAI Few-shot",
+    "n": 146,
+    "runs": 3,
+    "macro_f1_mean": 0.7604603236595004,
+    "macro_f1_std": 0.013144702305755861,
+    "macro_f1_runs": [
+      0.7734632019626647,
+      0.7471782454833301,
+      0.7607395235325066
+    ],
+    "accuracy_mean": 0.7397260273972602,
+    "consistency": 0.9657534246575342,
+    "latency_mean_s": 0.6759465753424657,
+    "latency_median_s": 0.6557,
+    "cost_per_headline_chf": 4.420602739726028e-05,
+    "invalid_answers": 0,
+    "f1_per_class": {
+      "positive": 0.7304347826086957,
+      "neutral": 0.660377358490566,
+      "negative": 0.9295774647887324
+    },
+    "confusion_matrix": [
+      [
+        42,
+        2,
+        0
+      ],
+      [
+        29,
+        35,
+        2
+      ],
+      [
+        0,
+        3,
+        33
+      ]
+    ]
+  }
+]

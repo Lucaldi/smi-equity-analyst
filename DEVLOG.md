@@ -42,3 +42,15 @@ Ein Eintrag pro Schritt. Grundlage für die Kapitel «Lösungsansatz» und «Ref
   OpenAI Zero-shot (V2), optional OpenAI Few-shot (V3). Kriterium H2: V2 Macro-F1 ≥ V1.
 - **Ergebnis:** 146/146 gelabelt: 44 positive, 66 neutral, 36 negative. Labeling-Werkzeug um
   Kontrollmodi erweitert (`--list`, `--review`, `--blind`).
+
+## Schritt 3 – Sentiment-Classifier und Vergleich H2 (28.11.2026)
+- **Ziel:** H2 messen: FinBERT (V1) vs. OpenAI Zero-shot (V2), optional Few-shot (V3)
+- **Entscheid:** gemeinsame LLM-Schicht `tools/llm.py` (Tokens, Kosten, Latenz pro Aufruf),
+  damit H2 und H5 dieselbe Kostenmessung nutzen. Cache pro Variante und Lauf in
+  `data/cache/sentiment/`. Few-shot-Beispiele bewusst nicht aus dem Testset (kein Leakage).
+  3 Läufe pro Variante für die Konsistenz, `temperature=0`.
+- **Ergebnis:** Macro-F1 V1 0.747, V2 0.789 ± 0.004, V3 0.760 ± 0.013 → H2 erfüllt (V2 ≥ V1).
+  Konsistenz V1 100 %, V2 98 %, V3 97 %. Latenz V1 0.02 s, V2 0.73 s pro Headline.
+  Kosten V2 ca. 0.00002 CHF pro Headline. Resultate in `eval/results/sentiment/`.
+- **Probleme:** Alle Varianten stufen neutrale Headlines oft als positiv ein (V2: 25 von 66).
+  Few-shot verschlechtert leicht statt zu verbessern.

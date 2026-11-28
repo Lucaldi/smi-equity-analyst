@@ -4,5 +4,5 @@
 reports:
   NESN.SW:
     fiscal_year: 2025
-    url: https://www.nestle.com/investors/publications        # TODO: PDF-Link von der Nestlé IR-Seite eintragen
+    url: https://www.nestle.com/sites/default/files/2026-02/financial-statements-2025-en.pdf        # TODO: PDF-Link von der Nestlé IR-Seite eintragen
     statements_lang: en
