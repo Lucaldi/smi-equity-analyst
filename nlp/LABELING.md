@@ -10,6 +10,12 @@ Korrekturen von Hand sind mit dem Werkzeug unten möglich (`z` geht zurück, ein
 ```bash
 python -m nlp.label_tool            # p / 0 / n, d = löschen, o = Link, z = zurück, q = Ende
 python -m nlp.label_tool --check    # Fortschritt und Verteilung
+
+# Kontrolle der Claude-Labels
+python -m nlp.label_tool --list [negative]   # Liste zum Überfliegen
+python -m nlp.label_tool --review            # Enter = ok, p / 0 / n = ändern
+python -m nlp.label_tool --blind 25          # blind nachlabeln → Übereinstimmung, Cohen's Kappa,
+                                             # gespeichert in nlp/label_check.csv (für den Bericht)
 ```
 Gespeichert wird nach jeder Eingabe; ein erneuter Start macht bei der ersten offenen Zeile weiter.
 
