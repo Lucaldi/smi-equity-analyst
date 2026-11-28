@@ -115,17 +115,19 @@ reproduzierbar sind und keine zusätzlichen API-Kosten verursachen.
 
 | Variante | Beschreibung |
 |---|---|
-| A – Single-Agent | Ein LLM-Aufruf erhält alle Kennzahlen + News und schreibt das Memo |
+| A – Single-Agent | Ein LLM-Aufruf erhält Rohkennzahlen + Headlines (dieselben wie B im selben Lauf), rechnet und bewertet selbst und schreibt das Memo |
 | B – Multi-Agent | Spezialisierte Agenten + Supervisor (dieses System) |
 
 | Kriterium | Messung |
 |---|---|
 | Faktentreue | Anteil Zahlen im Memo, die mit den Quelldaten übereinstimmen (automatisch geprüft) |
 | Konsistenz | Gleicher Titel 3× analysiert → Abweichung der Gesamteinschätzung |
-| Qualität | LLM-as-a-Judge mit fixem Bewertungsraster (Vollständigkeit, Begründung, Struktur), stichprobenweise manuell geprüft |
+| Qualität | LLM-as-a-Judge (gpt-4o, blind zur Variante) mit fixem Bewertungsraster (Vollständigkeit, Begründung, Struktur), stichprobenweise manuell geprüft |
 | Effizienz | Laufzeit, Tokens, Kosten pro Analyse |
 
-Lauf über alle 20 SMI-Titel, Resultate als Tabelle und Grafiken.
+Lauf über 5 Titel mit unterschiedlichem Profil (Nestlé mit Geschäftsbericht, Novartis in USD, UBS als
+Bank, ABB Industrie, Richemont mit Geschäftsjahr per März), je 3 Läufe pro Variante; Resultate als
+Tabelle und Grafik in `eval/results/`. Die Analyse selbst läuft für alle 20 Titel (`main.py --all`).
 
 ## 6. Repo-Struktur
 

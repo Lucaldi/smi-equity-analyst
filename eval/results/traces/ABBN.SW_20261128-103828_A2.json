@@ -1,0 +1,58 @@
+{
+ "ticker": "ABBN.SW",
+ "started_at": "2026-11-28T10:38:22",
+ "duration_s": 5.407,
+ "events": [
+  {
+   "t_s": 0.0,
+   "node": "single",
+   "kind": "start"
+  },
+  {
+   "t_s": 5.406,
+   "node": "single",
+   "kind": "llm",
+   "purpose": "Memo (Single-Agent)",
+   "model": "gpt-4o-mini",
+   "tokens_in": 808,
+   "tokens_out": 359,
+   "latency_s": 5.41
+  },
+  {
+   "t_s": 5.406,
+   "node": "single",
+   "kind": "result",
+   "summary": {
+    "rating": "Halten"
+   }
+  },
+  {
+   "t_s": 5.406,
+   "node": "single",
+   "kind": "end",
+   "duration_s": 5.406,
+   "llm_calls": 1,
+   "cost_chf": 0.00027
+  }
+ ],
+ "usage": {
+  "calls": 1,
+  "input_tokens": 808,
+  "output_tokens": 359,
+  "cost_chf": 0.00027
+ },
+ "memo": {
+  "rating": "Halten",
+  "conviction": "mittel",
+  "summary": "ABB zeigt solide Fundamentaldaten mit einem stabilen Umsatzwachstum und einer gesunden Gewinnmarge. Die Nachrichtenlage ist jedoch gemischt, insbesondere aufgrund regulatorischer Herausforderungen und Unsicherheiten bezüglich der Robotik-Sparte. Dies könnte die zukünftige Entwicklung des Unternehmens beeinflussen.",
+  "fundamental_view": "ABB hat im letzten Jahr einen Umsatz von 33,22 Milliarden USD erzielt, was einem Wachstum von 8,5 % im Vergleich zum Vorjahr entspricht. Die operative Marge liegt bei 18,2 %, was auf eine effiziente Kostenstruktur hinweist. Die Verschuldung ist moderat, mit einer Verschuldungsquote von 0,56.",
+  "news_view": "Die Nachrichtenlage ist durch regulatorische Hürden in China und Unsicherheiten bezüglich der Robotik-Sparte geprägt. Die Übernahme von Ziehl-Abegg könnte jedoch das Wachstumspotenzial von ABB stärken, während die Überlegungen zu einem möglichen Börsengang der Robotik-Sparte zusätzliche Unsicherheiten mit sich bringen.",
+  "conflicts": "Die Fundamentaldaten zeigen ein starkes Wachstum und eine gesunde finanzielle Basis, während die Nachrichtenlage durch regulatorische Unsicherheiten und strategische Herausforderungen belastet ist. Diese Widersprüche führen zu einer vorsichtigen Haltung.",
+  "risks": [
+   "Regulatorische Hürden in wichtigen Märkten, insbesondere in China.",
+   "Unsicherheiten bezüglich der zukünftigen Entwicklung der Robotik-Sparte.",
+   "Marktschwankungen und wirtschaftliche Unsicherheiten, die die Nachfrage beeinflussen könnten.",
+   "Mögliche Schwierigkeiten bei der Integration von Übernahmen."
+  ]
+ }
+}

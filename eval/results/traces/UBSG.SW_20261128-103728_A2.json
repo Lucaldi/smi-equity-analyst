@@ -1,0 +1,58 @@
+{
+ "ticker": "UBSG.SW",
+ "started_at": "2026-11-28T10:37:23",
+ "duration_s": 5.252,
+ "events": [
+  {
+   "t_s": 0.0,
+   "node": "single",
+   "kind": "start"
+  },
+  {
+   "t_s": 5.252,
+   "node": "single",
+   "kind": "llm",
+   "purpose": "Memo (Single-Agent)",
+   "model": "gpt-4o-mini",
+   "tokens_in": 1006,
+   "tokens_out": 313,
+   "latency_s": 5.25
+  },
+  {
+   "t_s": 5.252,
+   "node": "single",
+   "kind": "result",
+   "summary": {
+    "rating": "Halten"
+   }
+  },
+  {
+   "t_s": 5.252,
+   "node": "single",
+   "kind": "end",
+   "duration_s": 5.252,
+   "llm_calls": 1,
+   "cost_chf": 0.00027
+  }
+ ],
+ "usage": {
+  "calls": 1,
+  "input_tokens": 1006,
+  "output_tokens": 313,
+  "cost_chf": 0.00027
+ },
+ "memo": {
+  "rating": "Halten",
+  "conviction": "mittel",
+  "summary": "UBS zeigt solide Fundamentaldaten mit einem stabilen Gewinn und einer hohen Eigenkapitalquote. Die Nachrichtenlage ist gemischt, mit Bedenken hinsichtlich der Kapitalregulierung und der Abwanderung von Talenten. Insgesamt bleibt die Aktie aufgrund der Unsicherheiten im regulatorischen Umfeld und der Marktbedingungen neutral bewertet.",
+  "fundamental_view": "Die Umsatzentwicklung zeigt ein Wachstum von 4,4% im Vergleich zum Vorjahr, während der Nettogewinn stabil bleibt. Die Eigenkapitalquote ist mit 5,57% stark, jedoch ist die Verschuldung mit einer Gesamtschuld von 336 Milliarden USD hoch, was potenzielle Risiken birgt.",
+  "news_view": "Die Nachrichtenlage ist durch regulatorische Unsicherheiten und Bedenken hinsichtlich der Abwanderung von Talenten geprägt. Positive Entwicklungen in Bezug auf die Gewinnprognosen für andere Unternehmen könnten jedoch das Vertrauen in UBS stärken.",
+  "conflicts": "Die Fundamentaldaten zeigen eine solide Leistung, während die Nachrichtenlage auf regulatorische Herausforderungen hinweist. Diese Widersprüche könnten das Vertrauen der Investoren beeinträchtigen.",
+  "risks": [
+   "Regulatorische Unsicherheiten in der Schweiz",
+   "Abwanderung von Talenten und Fachkräften",
+   "Marktschwankungen und wirtschaftliche Unsicherheiten",
+   "Hohe Verschuldung im Vergleich zum Eigenkapital"
+  ]
+ }
+}

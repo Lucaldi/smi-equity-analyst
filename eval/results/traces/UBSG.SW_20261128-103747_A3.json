@@ -1,0 +1,58 @@
+{
+ "ticker": "UBSG.SW",
+ "started_at": "2026-11-28T10:37:42",
+ "duration_s": 5.665,
+ "events": [
+  {
+   "t_s": 0.0,
+   "node": "single",
+   "kind": "start"
+  },
+  {
+   "t_s": 5.665,
+   "node": "single",
+   "kind": "llm",
+   "purpose": "Memo (Single-Agent)",
+   "model": "gpt-4o-mini",
+   "tokens_in": 1006,
+   "tokens_out": 336,
+   "latency_s": 5.66
+  },
+  {
+   "t_s": 5.665,
+   "node": "single",
+   "kind": "result",
+   "summary": {
+    "rating": "Halten"
+   }
+  },
+  {
+   "t_s": 5.665,
+   "node": "single",
+   "kind": "end",
+   "duration_s": 5.665,
+   "llm_calls": 1,
+   "cost_chf": 0.00028
+  }
+ ],
+ "usage": {
+  "calls": 1,
+  "input_tokens": 1006,
+  "output_tokens": 336,
+  "cost_chf": 0.00028
+ },
+ "memo": {
+  "rating": "Halten",
+  "conviction": "mittel",
+  "summary": "UBS zeigt solide Fundamentaldaten mit einem stabilen Gewinn und einer hohen Eigenkapitalquote. Die Nachrichtenlage ist gemischt, mit Bedenken hinsichtlich der Kapitalregulierung und der Abwanderung von Talenten, was die Unsicherheit erhöht. Insgesamt bleibt die Aktie aufgrund der aktuellen Herausforderungen im Finanzsektor neutral bewertet.",
+  "fundamental_view": "Die Umsatzentwicklung zeigt ein Wachstum von 4,4% im Vergleich zum Vorjahr, während der Nettogewinn stabil bleibt. Die Eigenkapitalquote von 5,57% und die Verschuldungsquote von 37,5% deuten auf eine gesunde finanzielle Basis hin.",
+  "news_view": "Die Nachrichtenlage ist durch Bedenken hinsichtlich der Kapitalregulierung und mögliche Abwanderungen von Talenten geprägt. Positive Entwicklungen wie die Erhöhung der Gewinnprognosen für bestimmte Unternehmen durch UBS zeigen jedoch auch das Potenzial des Unternehmens auf.",
+  "conflicts": "Die Fundamentaldaten deuten auf eine stabile finanzielle Lage hin, während die Nachrichten über mögliche regulatorische Herausforderungen und Talentabwanderungen Unsicherheiten schaffen. Diese Widersprüche könnten die zukünftige Performance der Aktie beeinflussen.",
+  "risks": [
+   "Regulatorische Änderungen könnten die Geschäftstätigkeit beeinträchtigen.",
+   "Talentabwanderung könnte die Wettbewerbsfähigkeit verringern.",
+   "Marktschwankungen im Finanzsektor könnten die Erträge belasten.",
+   "Globale wirtschaftliche Unsicherheiten könnten das Wachstum hemmen."
+  ]
+ }
+}

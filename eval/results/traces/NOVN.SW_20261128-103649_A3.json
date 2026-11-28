@@ -1,0 +1,58 @@
+{
+ "ticker": "NOVN.SW",
+ "started_at": "2026-11-28T10:36:43",
+ "duration_s": 5.738,
+ "events": [
+  {
+   "t_s": 0.0,
+   "node": "single",
+   "kind": "start"
+  },
+  {
+   "t_s": 5.737,
+   "node": "single",
+   "kind": "llm",
+   "purpose": "Memo (Single-Agent)",
+   "model": "gpt-4o-mini",
+   "tokens_in": 1137,
+   "tokens_out": 339,
+   "latency_s": 5.74
+  },
+  {
+   "t_s": 5.737,
+   "node": "single",
+   "kind": "result",
+   "summary": {
+    "rating": "Halten"
+   }
+  },
+  {
+   "t_s": 5.737,
+   "node": "single",
+   "kind": "end",
+   "duration_s": 5.737,
+   "llm_calls": 1,
+   "cost_chf": 0.0003
+  }
+ ],
+ "usage": {
+  "calls": 1,
+  "input_tokens": 1137,
+  "output_tokens": 339,
+  "cost_chf": 0.0003
+ },
+ "memo": {
+  "rating": "Halten",
+  "conviction": "mittel",
+  "summary": "Novartis zeigt solide Fundamentaldaten mit einem stabilen Umsatzwachstum und einer hohen operativen Marge. Die Nachrichtenlage ist gemischt, mit positiven Entwicklungen in der Pipeline, jedoch auch Herausforderungen durch Patentabläufe und regulatorische Bedenken. Insgesamt bleibt die Aktie ein Halte-Kandidat.",
+  "fundamental_view": "Die Umsätze von Novartis sind im Vergleich zum Vorjahr um 9,5% gewachsen, während die operative Marge bei 31,1% liegt. Die Verschuldung ist moderat, mit einer Verschuldungsquote von 76,6%, was auf eine gesunde Bilanz hinweist.",
+  "news_view": "Die letzten Nachrichten zeigen sowohl Fortschritte in der Medikamentenentwicklung als auch Bedenken hinsichtlich der Auswirkungen von regulatorischen Änderungen und Patentabläufen. Insbesondere die Prognose eines jährlichen Umsatzwachstums von 5% bis 2031 könnte die Marktstimmung beeinflussen.",
+  "conflicts": "Die Fundamentaldaten deuten auf ein stabiles Wachstum hin, während die Nachrichtenlage gemischte Signale sendet, insbesondere bezüglich der langfristigen Wachstumsprognosen und regulatorischen Herausforderungen. Dies könnte die Bewertung der Aktie belasten.",
+  "risks": [
+   "Patentabläufe könnten zu Umsatzrückgängen führen.",
+   "Regulatorische Unsicherheiten in den USA und China.",
+   "Wettbewerb durch neue Medikamente und Technologien.",
+   "Negative Auswirkungen von Berichten über Sicherheitsbedenken bei bestimmten Therapien."
+  ]
+ }
+}

@@ -1,0 +1,58 @@
+{
+ "ticker": "NOVN.SW",
+ "started_at": "2026-11-28T10:35:59",
+ "duration_s": 7.098,
+ "events": [
+  {
+   "t_s": 0.0,
+   "node": "single",
+   "kind": "start"
+  },
+  {
+   "t_s": 7.098,
+   "node": "single",
+   "kind": "llm",
+   "purpose": "Memo (Single-Agent)",
+   "model": "gpt-4o-mini",
+   "tokens_in": 1138,
+   "tokens_out": 394,
+   "latency_s": 7.1
+  },
+  {
+   "t_s": 7.098,
+   "node": "single",
+   "kind": "result",
+   "summary": {
+    "rating": "Halten"
+   }
+  },
+  {
+   "t_s": 7.098,
+   "node": "single",
+   "kind": "end",
+   "duration_s": 7.098,
+   "llm_calls": 1,
+   "cost_chf": 0.00033
+  }
+ ],
+ "usage": {
+  "calls": 1,
+  "input_tokens": 1138,
+  "output_tokens": 394,
+  "cost_chf": 0.00033
+ },
+ "memo": {
+  "rating": "Halten",
+  "conviction": "mittel",
+  "summary": "Novartis zeigt solide Fundamentaldaten mit einem stabilen Umsatzwachstum und einer hohen operativen Marge. Die Nachrichtenlage ist gemischt, mit positiven Entwicklungen in der Pipeline, jedoch auch Herausforderungen durch Patentabläufe und regulatorische Bedenken. Insgesamt bleibt das Unternehmen gut positioniert, um in den kommenden Jahren moderates Wachstum zu erzielen.",
+  "fundamental_view": "Die Umsätze von Novartis stiegen im Vergleich zum Vorjahr um 9,5%, während die operative Marge bei 31,1% liegt. Die Verschuldung ist moderat, mit einer Verschuldungsquote von 76,6%, was auf eine solide finanzielle Basis hinweist. Das Unternehmen zahlt eine attraktive Dividende von 4,43 USD pro Aktie.",
+  "news_view": "Die letzten Nachrichten zeigen, dass Novartis an der Entwicklung neuer Medikamente arbeitet, jedoch auch mit Herausforderungen konfrontiert ist, insbesondere im Hinblick auf Patentabläufe und regulatorische Fragen. Die Aussagen des CEOs über die Auswirkungen von KI auf die Medikamentenentwicklung sind vielversprechend, jedoch gibt es auch Bedenken hinsichtlich der langfristigen Wachstumsziele.",
+  "conflicts": "Es gibt einen Widerspruch zwischen den positiven Fundamentaldaten und den Bedenken hinsichtlich der zukünftigen Wachstumsprognosen, die durch Patentabläufe und regulatorische Herausforderungen belastet sind. Diese Faktoren könnten das zukünftige Wachstum beeinträchtigen.",
+  "risks": [
+   "Patentabläufe könnten zu Umsatzrückgängen führen.",
+   "Regulatorische Herausforderungen könnten die Markteinführung neuer Produkte verzögern.",
+   "Abhängigkeit von wenigen Blockbuster-Medikamenten für das Umsatzwachstum.",
+   "Marktvolatilität und geopolitische Risiken, insbesondere im Zusammenhang mit China."
+  ]
+ }
+}

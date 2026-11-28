@@ -17,7 +17,7 @@ RATIO_KEYS = {
 }
 MULTIPLE_KEYS = {
     "pe": "KGV", "ev_ebitda": "EV/EBITDA", "ev_sales": "EV/Umsatz", "pb": "Kurs/Buchwert",
-    "net_debt_to_ebitda": "Nettoverschuldung/EBITDA",
+    "net_debt_to_ebitda": "Nettoverschuldung/EBITDA", "debt_to_equity": "Verschuldungsgrad (Finanzschulden/EK)",
 }
 SCORE_LABELS = {"profitability": "Profitabilität", "growth": "Wachstum", "balance_sheet": "Bilanz",
                 "valuation": "Bewertung", "overall": "Gesamt"}

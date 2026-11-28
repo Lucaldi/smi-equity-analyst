@@ -77,3 +77,25 @@ Ein Eintrag pro Schritt. Grundlage für die Kapitel «Lösungsansatz» und «Ref
     beim Capex immaterielle Anlagen mit (4 527 + 384 = 4 911), bei den flüssigen Mitteln fehlen
     300 Mio. gesperrte Mittel.
   - LLM schreibt trotz Anweisung «ß» → im Memo deterministisch ersetzt.
+
+## Schritt 5 – Evaluation Single- vs. Multi-Agent (28.11.2026)
+- **Ziel:** H1, H3, H4, H5 und Qualität messen
+- **Entscheid:**
+  - 5 Titel mit unterschiedlichem Profil (Nestlé mit PDF, Novartis in USD, UBS als Bank, ABB,
+    Richemont mit Geschäftsjahr per März), je 3 Läufe pro Variante.
+  - Variante A bekommt pro Lauf dieselben Rohdaten wie B (Kennzahlen, Headlines), damit
+    Unterschiede vom Systemaufbau kommen und nicht von schwankenden News-Treffern.
+  - Faktencheck (`eval/fact_check.py`): jede Zahl im Memo gegen die in Python berechneten Werte,
+    mit Toleranz gemäss der Rundung im Memo; nicht belegte Zahlen mit Kontext gespeichert.
+  - LLM-as-a-Judge mit gpt-4o (stärker als der Generator), blind zur Variante.
+- **Ergebnis:** Faktentreue A 83 % (45/54), B 100 % (68/68) → H3 erfüllt. Konsistenz A und B
+  100 % → H4 erfüllt. Laufzeit B Ø 14 s, max 20 s; Kosten B Ø 0.0007 CHF → H5 erfüllt.
+  Judge A 3.98, B 3.82 (B schwächer bei Struktur). H1 85 % (11/13, nur Nestlé) → knapp verfehlt.
+- **Probleme:**
+  - Erster Durchgang: Faktencheck kannte einfache Verhältniszahlen (Verschuldungsgrad in %,
+    Schulden/Bilanzsumme) nicht und markierte drei korrekt gerechnete Werte von A als falsch.
+    Ergänzt und Evaluation neu gestartet. Die verbleibenden 9 Fehler von A sind echte Rechen-
+    bzw. Rundungsfehler (z. B. Novartis Wachstum 9.5 % statt 9.57 %, UBS 37.5 % statt 372.5 %).
+  - Alle 30 Memos lauten «Halten», auch Novartis mit Gesamtscore 8.3: Das LLM deutet neutrale
+    News (Score 0.0) als Unsicherheit und stuft trotz Regel im Prompt herunter. Die hohe
+    Konsistenz ist deshalb teilweise Zurückhaltung des Modells, nicht Trennschärfe.

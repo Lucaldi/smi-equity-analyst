@@ -1,0 +1,285 @@
+{
+ "ticker": "NOVN.SW",
+ "started_at": "2026-11-28T10:35:45",
+ "duration_s": 13.631,
+ "events": [
+  {
+   "t_s": 0.006,
+   "node": "fundamental",
+   "kind": "start"
+  },
+  {
+   "t_s": 0.008,
+   "node": "news",
+   "kind": "start"
+  },
+  {
+   "t_s": 1.273,
+   "node": "fundamental",
+   "kind": "tool",
+   "tool": "collect_kennzahlen",
+   "args": [
+    "NOVN.SW"
+   ],
+   "result": {
+    "fiscal_year": 2025,
+    "aus_report": 0,
+    "aus_yfinance": 23,
+    "validierung_ok": null
+   },
+   "duration_s": 1.267
+  },
+  {
+   "t_s": 1.273,
+   "node": "fundamental",
+   "kind": "tool",
+   "tool": "compute_multiples",
+   "args": [
+    {
+     "revenue": 56674000000.0,
+     "operating_profit": 17644000000.0,
+     "net_income": 13984000000.0,
+     "eps_diluted": 7.15,
+     "total_assets": 110949000000.0,
+     "total_liabilities": 64400000000.0,
+     "total_equity": 46130000000.0,
+     "cash": 11435000000.0,
+     "total_debt": 35376000000.0,
+     "operating_cash_flow": 19144000000.0,
+     "capex": 3900000000.0,
+     "depreciation_amortization": 5325000000.0,
+     "dividends_paid": 7818000000.0,
+     "revenue_prev": 51722000000.0,
+     "fiscal_year": 2025,
+     "currency": "USD",
+     "price": 153.76330935955048,
+     "shares_outstanding": 1888623572.0,
+     "market_cap": 290401013042.1406,
+     "dividend_per_share": 4.427426028251648,
+     "sector": "Healthcare",
+     "market_currency": "CHF",
+     "fx_market_to_report": 1.1966016292572021
+    }
+   ],
+   "result": {
+    "revenue_growth": 0.096,
+    "operating_margin": 0.311,
+    "pe": 21.505
+   },
+   "duration_s": 0.0
+  },
+  {
+   "t_s": 1.273,
+   "node": "fundamental",
+   "kind": "tool",
+   "tool": "score_dimensions",
+   "args": [
+    {
+     "revenue_growth": 0.09574262402845979,
+     "operating_margin": 0.31132441684017365,
+     "net_margin": 0.24674453894201928,
+     "ebitda": 22969000000.0,
+     "roe": 0.3031432907001951,
+     "equity_ratio": 0.41577661808578714,
+     "debt_to_equity": 0.766876219380013,
+     "net_debt": 23941000000.0,
+     "net_debt_to_ebitda": 1.0423179067438721,
+     "free_cash_flow": 15244000000.0,
+     "fcf_margin": 0.2689769559233511,
+     "market_cap": 290401013042.1406,
+     "enterprise_value": 314342013042.1406,
+     "pe": 21.50535795238468,
+     "ev_ebitda": 13.685489705348106,
+     "ev_sales": 5.546494213257237,
+     "pb": 6.295274507742047,
+     "fcf_yield": 0.05249292982937327,
+     "dividend_yield": 0.028793774319066146,
+     "payout_ratio": 0.5590675057208238
+    }
+   ],
+   "result": "{\"profitability\": 10.0, \"growth\": 9.7, \"balance_sheet\": 7.6, \"valuation\": 6.0, \"overall\": 8.3}",
+   "duration_s": 0.0
+  },
+  {
+   "t_s": 1.432,
+   "node": "news",
+   "kind": "tool",
+   "tool": "fetch_news",
+   "args": [
+    "NOVN.SW",
+    "Novartis",
+    90,
+    20
+   ],
+   "result": {
+    "anzahl": 20,
+    "quellen": {
+     "Fierce Pharma": 3,
+     "MT Newswires": 2,
+     "Reuters": 2
+    }
+   },
+   "duration_s": 1.424
+  },
+  {
+   "t_s": 1.444,
+   "node": "news",
+   "kind": "tool",
+   "tool": "classify_sentiment",
+   "args": [
+    [
+     "Novartis raises the stakes on 3 of its biggest drugs",
+     "Novartis rejects AI industry hopes to cure cancer in 5 to 10 years",
+     "Market Chatter: Novartis CEO Says US Limits on China Biotech Investment May Hurt Drug Development",
+     "Novartis CEO: AI Could Cut Drug Development Time by Years",
+     "Novartis CEO leans on surge of pipeline readouts to quell growth fears",
+     "Novartis Sees Sales Growth Through Next Round of Patent Expirations",
+     "Novartis sets lower annual sales growth target through 2031",
+     "Novartis sees 5% yearly sales growth to 2031, margin back to 40% by 2029",
+     "Novartis bets on bigger blockbusters to power growth, forecasting 5% annual sales through 2031",
+     "FDA Clears Novartis Drug Cosentyx As Steroid Alternative for Inflammatory Pain Causing Stiff Shoulders",
+     "Novartis eyes Rhapsido’s broader use on positive urticaria data drop",
+     "Amgen, In A Buy Zone, Unveils Highly Anticipated Novartis-Rivaling Sjogren's Data",
+     "How IBD Stock Of The Day TG Therapeutics Is Catching Up To Roche, Novartis",
+     "Former Novartis CEO on What AI Can’t Replace in the Workplace",
+     "Update: Market Chatter: Novartis Reports Two Confirmed Tumor Cases Linked to Neuromuscular Gene Therapy",
+     "Novartis confirms more reported tumor cases in Zolgensma patients as SMA groups seek details",
+     "Geron’s Rytelo stumbles in phase 3 as Novartis gears up for post-JAK inhibitor blood cancer bid",
+     "Novartis CEO says AI has tangibly improved P&L for the first time",
+     "Novartis shareholder calls for board overhaul following costly deal setbacks: Reuters",
+     "EXCLUSIVE: Major Novartis shareholder calls for board shake-up after drug trial setbacks"
+    ]
+   ],
+   "result": {
+    "neutral": 6,
+    "negative": 7,
+    "positive": 7
+   },
+   "duration_s": 0.011
+  },
+  {
+   "t_s": 4.755,
+   "node": "news",
+   "kind": "llm",
+   "purpose": "Themen und Begründung",
+   "model": "gpt-4o-mini",
+   "tokens_in": 838,
+   "tokens_out": 156,
+   "latency_s": 3.31
+  },
+  {
+   "t_s": 4.755,
+   "node": "news",
+   "kind": "result",
+   "summary": {
+    "score": 0.0,
+    "counts": {
+     "positive": 7,
+     "neutral": 6,
+     "negative": 7
+    },
+    "themes": [
+     "AI und Medikamentenentwicklung",
+     "Verkaufserwartungen und Wachstumsprognosen",
+     "Krebsforschung und Therapieprobleme",
+     "Pipeline und Produktfreigaben",
+     "Aktionärsfragen und Unternehmensführung"
+    ]
+   }
+  },
+  {
+   "t_s": 4.755,
+   "node": "news",
+   "kind": "end",
+   "duration_s": 4.747,
+   "llm_calls": 1,
+   "cost_chf": 0.00018
+  },
+  {
+   "t_s": 7.322,
+   "node": "fundamental",
+   "kind": "llm",
+   "purpose": "Interpretation Kennzahlen",
+   "model": "gpt-4o-mini",
+   "tokens_in": 619,
+   "tokens_out": 354,
+   "latency_s": 6.05
+  },
+  {
+   "t_s": 7.322,
+   "node": "fundamental",
+   "kind": "result",
+   "summary": {
+    "scores": {
+     "profitability": 10.0,
+     "growth": 9.7,
+     "balance_sheet": 7.6,
+     "valuation": 6.0,
+     "overall": 8.3
+    },
+    "summary": "Novartis präsentiert sich als finanziell starkes Unternehmen mit hoher Profitabilität und solidem Wachstum. Die Bilanz ist stabil, während die Bewertung im Vergleich zur Branche angemessen erscheint. Dennoch bestehen Risiken durch Marktentwicklungen und die Abhängigkeit von der Produktpipeline."
+   }
+  },
+  {
+   "t_s": 7.322,
+   "node": "fundamental",
+   "kind": "end",
+   "duration_s": 7.316,
+   "llm_calls": 2,
+   "cost_chf": 0.00042
+  },
+  {
+   "t_s": 7.323,
+   "node": "supervisor",
+   "kind": "start"
+  },
+  {
+   "t_s": 13.628,
+   "node": "supervisor",
+   "kind": "llm",
+   "purpose": "Memo",
+   "model": "gpt-4o-mini",
+   "tokens_in": 1260,
+   "tokens_out": 337,
+   "latency_s": 6.31
+  },
+  {
+   "t_s": 13.628,
+   "node": "supervisor",
+   "kind": "result",
+   "summary": {
+    "rating": "Halten",
+    "conviction": "mittel"
+   }
+  },
+  {
+   "t_s": 13.628,
+   "node": "supervisor",
+   "kind": "end",
+   "duration_s": 6.306,
+   "llm_calls": 1,
+   "cost_chf": 0.00031
+  }
+ ],
+ "usage": {
+  "calls": 3,
+  "input_tokens": 2717,
+  "output_tokens": 847,
+  "cost_chf": 0.00073
+ },
+ "memo": {
+  "rating": "Halten",
+  "conviction": "mittel",
+  "summary": "Novartis zeigt eine solide Fundamentalanalyse mit einem Gesamtscore von 8.3, was auf eine starke finanzielle Gesundheit und Wachstum hinweist. Die Nachrichtenlage ist jedoch gemischt, was die Bewertung beeinflusst. Die Unsicherheiten in der Krebsforschung und interne Spannungen könnten das zukünftige Wachstum belasten.",
+  "fundamental_view": "Die Fundamentalanalyse zeigt eine hohe Profitabilität mit einer EBIT-Marge von 31.1 % und einem Umsatzwachstum von 9.6 %. Die Bilanz ist stabil, mit einer Eigenkapitalquote von 41.6 % und moderater Nettoverschuldung im Verhältnis zum EBITDA.",
+  "news_view": "Die Nachrichtenlage ist durch einen neutralen Sentiment-Score von 0.0 geprägt, mit sowohl positiven als auch negativen Aspekten. Während Fortschritte in der KI-gestützten Medikamentenentwicklung und optimistische Verkaufsprognosen hervorgehoben werden, gibt es auch Bedenken bezüglich der Krebsforschung und interner Unternehmensführung.",
+  "conflicts": "Die Fundamentaldaten sind stark, während die Nachrichtenlage gemischte Signale sendet. Die positiven finanziellen Kennzahlen könnten durch die Unsicherheiten in der Produktpipeline und interne Spannungen relativiert werden.",
+  "risks": [
+   "Mögliche Marktschwankungen",
+   "Abhängigkeit von Produktpipeline",
+   "Herausforderungen in der Krebsforschung",
+   "Interne Spannungen bezüglich Unternehmensführung"
+  ]
+ },
+ "errors": []
+}

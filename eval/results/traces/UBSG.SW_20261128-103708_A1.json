@@ -1,0 +1,58 @@
+{
+ "ticker": "UBSG.SW",
+ "started_at": "2026-11-28T10:37:03",
+ "duration_s": 4.979,
+ "events": [
+  {
+   "t_s": 0.0,
+   "node": "single",
+   "kind": "start"
+  },
+  {
+   "t_s": 4.979,
+   "node": "single",
+   "kind": "llm",
+   "purpose": "Memo (Single-Agent)",
+   "model": "gpt-4o-mini",
+   "tokens_in": 1006,
+   "tokens_out": 338,
+   "latency_s": 4.98
+  },
+  {
+   "t_s": 4.979,
+   "node": "single",
+   "kind": "result",
+   "summary": {
+    "rating": "Halten"
+   }
+  },
+  {
+   "t_s": 4.979,
+   "node": "single",
+   "kind": "end",
+   "duration_s": 4.979,
+   "llm_calls": 1,
+   "cost_chf": 0.00028
+  }
+ ],
+ "usage": {
+  "calls": 1,
+  "input_tokens": 1006,
+  "output_tokens": 338,
+  "cost_chf": 0.00028
+ },
+ "memo": {
+  "rating": "Halten",
+  "conviction": "mittel",
+  "summary": "UBS zeigt solide Fundamentaldaten mit einem stabilen Gewinn und einer hohen Eigenkapitalquote. Die Nachrichtenlage ist gemischt, mit Bedenken hinsichtlich der Kapitalregulierung und der möglichen Verlagerung des Unternehmens. Insgesamt bleibt die Aktie aufgrund der Unsicherheiten im regulatorischen Umfeld und der Marktbedingungen neutral bewertet.",
+  "fundamental_view": "Die Umsatzentwicklung zeigt ein Wachstum von 4,4% im Vergleich zum Vorjahr, während der Nettogewinn stabil bleibt. Die Eigenkapitalquote ist mit 5,57% stark, jedoch ist die Verschuldung mit einer Gesamtschuld von 336 Milliarden USD hoch, was potenzielle Risiken birgt.",
+  "news_view": "Die Nachrichtenlage ist von regulatorischen Herausforderungen geprägt, insbesondere bezüglich der Kapitalanforderungen für ausländische Einheiten. Zudem gibt es Berichte über mögliche Abwanderungen von Talenten, was die zukünftige Geschäftsentwicklung beeinträchtigen könnte.",
+  "conflicts": "Die Fundamentaldaten zeigen eine starke finanzielle Basis, während die Nachrichtenlage auf Unsicherheiten und regulatorische Herausforderungen hinweist. Diese Diskrepanz könnte die zukünftige Performance der Aktie belasten.",
+  "risks": [
+   "Regulatorische Änderungen könnten die Geschäftstätigkeit beeinträchtigen.",
+   "Abwanderung von Talenten könnte die Wettbewerbsfähigkeit verringern.",
+   "Marktvolatilität könnte die Erträge negativ beeinflussen.",
+   "Bedenken hinsichtlich der globalen wirtschaftlichen Lage könnten das Wachstum bremsen."
+  ]
+ }
+}

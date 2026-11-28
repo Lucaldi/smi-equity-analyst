@@ -35,6 +35,7 @@ def compute_multiples(k: dict) -> dict[str, float | None]:
         "ebitda": ebitda,
         "roe": _div(k.get("net_income"), k.get("total_equity")),
         "equity_ratio": _div(k.get("total_equity"), k.get("total_assets")),
+        "debt_to_equity": _div(k.get("total_debt"), k.get("total_equity")),
         "net_debt": net_debt,
         "net_debt_to_ebitda": _div(net_debt, ebitda),
         "free_cash_flow": fcf,

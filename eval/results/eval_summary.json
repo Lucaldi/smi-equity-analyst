@@ -1,0 +1,80 @@
+{
+  "variants": {
+    "A": {
+      "analyses": 15,
+      "faithfulness": 0.8333333333333334,
+      "numbers": 54,
+      "supported": 45,
+      "consistency": 1.0,
+      "ratings": {
+        "NESN.SW": {
+          "Halten": 3
+        },
+        "NOVN.SW": {
+          "Halten": 3
+        },
+        "UBSG.SW": {
+          "Halten": 3
+        },
+        "ABBN.SW": {
+          "Halten": 3
+        },
+        "CFR.SW": {
+          "Halten": 3
+        }
+      },
+      "duration_mean_s": 8.621333333333332,
+      "duration_max_s": 13.41,
+      "cost_mean_chf": 0.000272,
+      "cost_max_chf": 0.00033,
+      "tokens_mean": 1264,
+      "llm_calls_mean": 1,
+      "judge_mean": 3.977777777777778,
+      "judge_completeness": 4,
+      "judge_reasoning": 4,
+      "judge_structure": 3.933333333333333
+    },
+    "B": {
+      "analyses": 15,
+      "faithfulness": 1.0,
+      "numbers": 68,
+      "supported": 68,
+      "consistency": 1.0,
+      "ratings": {
+        "NESN.SW": {
+          "Halten": 3
+        },
+        "NOVN.SW": {
+          "Halten": 3
+        },
+        "UBSG.SW": {
+          "Halten": 3
+        },
+        "ABBN.SW": {
+          "Halten": 3
+        },
+        "CFR.SW": {
+          "Halten": 3
+        }
+      },
+      "duration_mean_s": 13.580666666666668,
+      "duration_max_s": 19.55,
+      "cost_mean_chf": 0.000682,
+      "cost_max_chf": 0.00073,
+      "tokens_mean": 3268.133333333333,
+      "llm_calls_mean": 3,
+      "judge_mean": 3.822222222222222,
+      "judge_completeness": 4,
+      "judge_reasoning": 4,
+      "judge_structure": 3.466666666666667
+    }
+  },
+  "H1": {
+    "tickers": [
+      "NESN.SW"
+    ],
+    "checked": 13,
+    "ok": 11,
+    "share": 0.8461538461538461
+  }
+}
