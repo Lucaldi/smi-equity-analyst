@@ -54,3 +54,26 @@ Ein Eintrag pro Schritt. Grundlage für die Kapitel «Lösungsansatz» und «Ref
   Kosten V2 ca. 0.00002 CHF pro Headline. Resultate in `eval/results/sentiment/`.
 - **Probleme:** Alle Varianten stufen neutrale Headlines oft als positiv ein (V2: 25 von 66).
   Few-shot verschlechtert leicht statt zu verbessern.
+
+## Schritt 4 – Fundamental-Agent, News-Agent, Supervisor, Graph (28.11.2026)
+- **Ziel:** `python main.py --ticker NESN.SW --trace` end-to-end
+- **Entscheid:**
+  - Geschäftsbericht: Seiten der Konzernrechnung per Titel oben auf der Seite und Einheitenangabe
+    finden (schliesst das Inhaltsverzeichnis aus), nur diese Seiten mit Docling parsen (ohne OCR),
+    Tabellen als JSON in `data/cache/docling/`. Mapping per Regex auf ein Standardschema, das auch
+    `tools/kennzahlen.py` (yfinance) liefert. PDF-Werte haben Vorrang, Marktdaten aus yfinance.
+  - Marktdaten werden in die Berichtswährung umgerechnet (viele SMI-Titel berichten in USD).
+  - Scores 0–10 je Dimension regelbasiert in Python (`tools/multiples.SCORE_RULES`); das LLM
+    interpretiert nur eine einheitliche Faktentabelle (`agents/facts.py`).
+  - LangGraph: Fundamental- und News-Agent parallel, Supervisor wartet auf beide. Fehler eines
+    Spezialisten landen in `errors`, der Supervisor arbeitet mit dem Rest.
+  - Trace pro Knoten (Start, Tool-Aufrufe, LLM-Aufrufe, Ergebnis, Dauer, Kosten) im Terminal mit
+    `--trace` und als JSON in `eval/results/traces/`.
+- **Ergebnis:** Nestlé: 13 Kennzahlen aus dem PDF (S. 6, 8, 9, 10), 11/13 innerhalb 2 % von
+  yfinance. Docling erstmals ca. 40 s, danach aus dem Cache ca. 1 s. Analyse 23 s, 16 LLM-Aufrufe,
+  0.001 CHF, Rating «Halten». 14 Offline-Tests.
+- **Probleme:**
+  - Abweichungen PDF ↔ yfinance sind Definitionsunterschiede, keine Parse-Fehler: yfinance zählt
+    beim Capex immaterielle Anlagen mit (4 527 + 384 = 4 911), bei den flüssigen Mitteln fehlen
+    300 Mio. gesperrte Mittel.
+  - LLM schreibt trotz Anweisung «ß» → im Memo deterministisch ersetzt.
