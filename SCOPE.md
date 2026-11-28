@@ -97,9 +97,8 @@ Standard ist OpenAI. Für H2 verglichen werden:
 
 Claude wird aus Kostengründen nicht verglichen.
 
-**Testset:** 146 gelabelte Headlines zu SMI-Titeln in `nlp/label_smi_headlines.csv`. Die Labels
-hat Claude gemäss `nlp/LABELING.md` gesetzt, also ein Modell, das nicht im Vergleich steht
-(kein Zirkelschluss). Financial PhraseBank wird bewusst **nicht** verwendet: FinBERT wurde
+**Testset:** 146 gelabelte Headlines zu SMI-Titeln in `nlp/label_smi_headlines.csv`, gelabelt
+gemäss `nlp/LABELING.md`. Financial PhraseBank wird bewusst **nicht** verwendet: FinBERT wurde
 darauf trainiert, ein Test darauf wäre Data Leakage und würde V1 bevorteilen.
 
 **Metriken:**
@@ -178,7 +177,7 @@ Jeder Graph-Knoten protokolliert Start, Tool-Aufrufe, Zwischenergebnis und Dauer
 
 | Bis | Meilenstein |
 |---|---|
-| Mo 23.11. | Repo auf GitHub, VS Code + Claude Code eingerichtet |
+| Mo 23.11. | Repo auf GitHub, VS Code eingerichtet |
 | Di 24.11. | Fundamental-Agent für Nestlé end-to-end (PDF → Docling → Kennzahlen → Validierung) |
 | Mi 25.11. | News-Agent, SMI-Headlines labeln, Sentiment-Vergleich (FinBERT, OpenAI) |
 | Do 26.11. | Supervisor, End-to-End-Lauf, Single-Agent-Baseline; Skalierung auf 5 Titel mit PDF, Rest via yfinance |

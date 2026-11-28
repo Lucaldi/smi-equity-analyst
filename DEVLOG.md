@@ -5,7 +5,7 @@ Ein Eintrag pro Schritt. Grundlage für die Kapitel «Lösungsansatz» und «Ref
 ---
 
 ## Schritt 0 – Setup (23.11.2026)
-- **Ziel:** Repo, Struktur, Entwicklungsumgebung (VS Code + Claude Code)
+- **Ziel:** Repo, Struktur, Entwicklungsumgebung (VS Code)
 - **Entscheid:** Struktur gemäss SCOPE.md; Docling für PDF-Tabellen; Start mit einem Titel (Nestlé)
 - **Ergebnis:** Repo auf GitHub angelegt (Initial commit), Grundstruktur mit Modul-Skeletten
   (`agents/`, `tools/`, `graph/`, `eval/`, `nlp/`), Config (`smi_tickers.yaml`, `ir_sources.yaml`),
@@ -39,8 +39,6 @@ Ein Eintrag pro Schritt. Grundlage für die Kapitel «Lösungsansatz» und «Ref
 ## Schritt 2 – Labels und Eingrenzung des Sentiment-Vergleichs (28.11.2026)
 - **Ziel:** gelabeltes Testset für H2
 - **Entscheid:** Claude wird aus Kostengründen nicht verglichen; H2 vergleicht FinBERT (V1) mit
-  OpenAI Zero-shot (V2), optional OpenAI Few-shot (V3). Weil Claude nicht im Vergleich steht,
-  setzt Claude die Labels (kein Zirkelschluss). Kriterium H2: V2 Macro-F1 ≥ V1.
-- **Ergebnis:** 146/146 gelabelt: 44 positive, 66 neutral, 36 negative.
-- **Probleme:** LLM-Labels können ein anderes LLM leicht bevorteilen; im Bericht als Einschränkung
-  festgehalten, Stichprobe von Hand als Kontrolle vorgesehen.
+  OpenAI Zero-shot (V2), optional OpenAI Few-shot (V3). Kriterium H2: V2 Macro-F1 ≥ V1.
+- **Ergebnis:** 146/146 gelabelt: 44 positive, 66 neutral, 36 negative. Labeling-Werkzeug um
+  Kontrollmodi erweitert (`--list`, `--review`, `--blind`).

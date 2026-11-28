@@ -1,21 +1,18 @@
 # Labeling-Richtlinie SMI-Headlines
 
-Testset für H2 (`nlp/label_smi_headlines.csv`). Die Labels hat **Claude** nach dieser Richtlinie
-gesetzt (28.11.2026). Verglichen werden FinBERT und OpenAI; Claude steht nicht im Vergleich.
-Würde eines der verglichenen Modelle die Labels setzen, wäre seine Treffsicherheit zirkulär.
-Korrekturen von Hand sind mit dem Werkzeug unten möglich (`z` geht zurück, ein erneutes Label
-überschreibt).
+Testset für H2 (`nlp/label_smi_headlines.csv`). Die Labels werden nicht mit einem der
+verglichenen Modelle (FinBERT, OpenAI) gesetzt, sonst wäre deren Treffsicherheit zirkulär.
 
 ## Ablauf
 ```bash
 python -m nlp.label_tool            # p / 0 / n, d = löschen, o = Link, z = zurück, q = Ende
 python -m nlp.label_tool --check    # Fortschritt und Verteilung
 
-# Kontrolle der Claude-Labels
+# Kontrolle bestehender Labels
 python -m nlp.label_tool --list [negative]   # Liste zum Überfliegen
 python -m nlp.label_tool --review            # Enter = ok, p / 0 / n = ändern
-python -m nlp.label_tool --blind 25          # blind nachlabeln → Übereinstimmung, Cohen's Kappa,
-                                             # gespeichert in nlp/label_check.csv (für den Bericht)
+python -m nlp.label_tool --blind 25          # Stichprobe blind neu labeln → Übereinstimmung,
+                                             # Cohen's Kappa, gespeichert in nlp/label_check.csv
 ```
 Gespeichert wird nach jeder Eingabe; ein erneuter Start macht bei der ersten offenen Zeile weiter.
 

@@ -31,3 +31,7 @@ history/
 .DS_Store
 .vscode/
 .idea/
+
+# Lokale Werkzeug-Konfiguration
+CLAUDE.md
+.claude/

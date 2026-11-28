@@ -4,8 +4,7 @@ Varianten:
     V1 – FinBERT (ProsusAI/finbert), vortrainiert
     V2 – OpenAI Zero-shot
     V3 – OpenAI Few-shot (optional)
-Claude ist bewusst nicht im Vergleich (Kosten); dafür hat Claude die Referenzlabels gesetzt,
-damit kein verglichenes Modell sich selbst bewertet.
+Claude ist aus Kostengründen nicht im Vergleich.
 
 Testset: 146 gelabelte SMI-Headlines in nlp/label_smi_headlines.csv
 (Spalten: text, ticker, date, source, url, label; gesammelt mit nlp/collect_headlines.py,

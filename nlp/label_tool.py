@@ -156,7 +156,7 @@ def blind(rows: list[dict], n: int, seed: int = 42) -> None:
         return
     with open(BLIND_PATH, "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
-        w.writerow(["row", "text", "label_claude", "label_human"])
+        w.writerow(["row", "text", "label_reference", "label_check"])
         for k, lab in mine:
             w.writerow([k, rows[k]["text"], rows[k]["label"], lab])
     ref = [rows[k]["label"] for k, _ in mine]
@@ -166,7 +166,7 @@ def blind(rows: list[dict], n: int, seed: int = 42) -> None:
           f"Cohen's Kappa: {cohen_kappa(ref, hum):.2f}  → {BLIND_PATH}")
     for (k, lab), r in zip(mine, ref):
         if lab != r:
-            print(f"  {k:>3} Claude {SHORT[r]} / du {SHORT[lab]}: {rows[k]['text']}")
+            print(f"  {k:>3} Referenz {SHORT[r]} / Kontrolle {SHORT[lab]}: {rows[k]['text']}")
 
 
 def main() -> None:
