@@ -3,12 +3,13 @@
 Varianten:
     V1 – FinBERT (ProsusAI/finbert), vortrainiert
     V2 – OpenAI Zero-shot
-    V3 – Claude Zero-shot
-    V4 – Few-shot mit dem besseren LLM aus V2/V3 (optional)
+    V3 – OpenAI Few-shot (optional)
+Claude ist bewusst nicht im Vergleich (Kosten); dafür hat Claude die Referenzlabels gesetzt,
+damit kein verglichenes Modell sich selbst bewertet.
 
-Testset: ca. 150 selbst gelabelte SMI-Headlines in nlp/label_smi_headlines.csv
+Testset: 146 gelabelte SMI-Headlines in nlp/label_smi_headlines.csv
 (Spalten: text, ticker, date, source, url, label; gesammelt mit nlp/collect_headlines.py,
-von Hand gelabelt gemäss nlp/LABELING.md). Financial PhraseBank wird nicht verwendet,
+gelabelt gemäss nlp/LABELING.md). Financial PhraseBank wird nicht verwendet,
 weil FinBERT darauf trainiert wurde (Data Leakage).
 
 Metriken: Macro-F1 (+ Confusion Matrix), Kosten und Latenz pro Headline, Konsistenz
@@ -18,7 +19,7 @@ Vorhersagen werden über tools.sentiment_classifier als JSON in data/cache/ geca
 Resultate landen in eval/results/sentiment/.
 
 Aufruf:
-    python -m nlp.compare_sentiment [--variants V1 V2 V3] [--runs 3]
+    python -m nlp.compare_sentiment [--variants V1 V2] [--runs 3]
 """
 from __future__ import annotations
 
@@ -35,15 +36,14 @@ LABELS = ["positive", "neutral", "negative"]
 class Variant:
     name: str
     backend: str               # finbert | llm
-    provider: str | None       # openai | anthropic (nur für llm)
+    provider: str | None       # openai (nur für llm)
     few_shot: bool = False
 
 
 VARIANTS: dict[str, Variant] = {
     "V1": Variant("V1", "finbert", None),
     "V2": Variant("V2", "llm", "openai"),
-    "V3": Variant("V3", "llm", "anthropic"),
-    "V4": Variant("V4", "llm", None, few_shot=True),   # Provider = bestes LLM aus V2/V3
+    "V3": Variant("V3", "llm", "openai", few_shot=True),   # optional
 }
 
 
@@ -65,8 +65,8 @@ def write_results(results: list[dict], out_dir: Path = RESULTS_DIR) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Sentiment-Vergleich V1–V4 (H2)")
-    parser.add_argument("--variants", nargs="+", default=["V1", "V2", "V3"], choices=list(VARIANTS))
+    parser = argparse.ArgumentParser(description="Sentiment-Vergleich FinBERT vs. OpenAI (H2)")
+    parser.add_argument("--variants", nargs="+", default=["V1", "V2"], choices=list(VARIANTS))
     parser.add_argument("--runs", type=int, default=3, help="Wiederholungen für die Konsistenz")
     args = parser.parse_args()
 

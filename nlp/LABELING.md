@@ -1,8 +1,10 @@
 # Labeling-Richtlinie SMI-Headlines
 
-Testset für H2 (`nlp/label_smi_headlines.csv`). Gelabelt wird **von Hand**, nicht mit FinBERT
-oder einem LLM: Diese Modelle werden auf dem Set verglichen. Würden sie die Labels setzen,
-wäre ihre Treffsicherheit zirkulär (das labelnde Modell hätte automatisch einen Vorteil).
+Testset für H2 (`nlp/label_smi_headlines.csv`). Die Labels hat **Claude** nach dieser Richtlinie
+gesetzt (28.11.2026). Verglichen werden FinBERT und OpenAI; Claude steht nicht im Vergleich.
+Würde eines der verglichenen Modelle die Labels setzen, wäre seine Treffsicherheit zirkulär.
+Korrekturen von Hand sind mit dem Werkzeug unten möglich (`z` geht zurück, ein erneutes Label
+überschreibt).
 
 ## Ablauf
 ```bash

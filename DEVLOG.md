@@ -24,7 +24,7 @@ Ein Eintrag pro Schritt. Grundlage für die Kapitel «Lösungsansatz» und «Ref
 - **Ziel:** ca. 150 SMI-Headlines als Testset für H2, aus seriösen Quellen
 - **Entscheid:** News aus yfinance (ohne Bewertungs-Blogs) plus Tavily auf einer festen Liste
   englischsprachiger Qualitätsmedien. Dieselbe Funktion (`tools/news_fetcher.fetch_news`) für
-  News-Agent und Testset. Labeling von Hand, nicht mit FinBERT oder einem LLM (Zirkelschluss).
+  News-Agent und Testset. Labeling nicht mit einem der verglichenen Modelle (Zirkelschluss).
 - **Ergebnis:** 146 Headlines aus 33 Quellen in `nlp/label_smi_headlines.csv`, alle 20 Titel
   vertreten. Labeling-Werkzeug `nlp/label_tool.py`, Richtlinie `nlp/LABELING.md`.
   8 Offline-Tests für den News-Fetcher.
@@ -35,3 +35,12 @@ Ein Eintrag pro Schritt. Grundlage für die Kapitel «Lösungsansatz» und «Ref
   - Tavily: Titel mit Quellen-Anhängseln, gekürzte Titel, Kursseiten statt Meldungen; Treffer
     schwanken zwischen Läufen. Gelöst mit Titelbereinigung und Duplikaterkennung; die CSV ist
     der massgebende Stand.
+
+## Schritt 2 – Labels und Eingrenzung des Sentiment-Vergleichs (28.11.2026)
+- **Ziel:** gelabeltes Testset für H2
+- **Entscheid:** Claude wird aus Kostengründen nicht verglichen; H2 vergleicht FinBERT (V1) mit
+  OpenAI Zero-shot (V2), optional OpenAI Few-shot (V3). Weil Claude nicht im Vergleich steht,
+  setzt Claude die Labels (kein Zirkelschluss). Kriterium H2: V2 Macro-F1 ≥ V1.
+- **Ergebnis:** 146/146 gelabelt: 44 positive, 66 neutral, 36 negative.
+- **Probleme:** LLM-Labels können ein anderes LLM leicht bevorteilen; im Bericht als Einschränkung
+  festgehalten, Stichprobe von Hand als Kontrolle vorgesehen.

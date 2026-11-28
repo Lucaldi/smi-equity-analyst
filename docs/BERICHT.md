@@ -33,10 +33,11 @@ mit Novartis als Vergleich, Danone mit Nestlé als Nebenbezug, UBS-Research zu T
 Verbleibend: **146 Headlines** aus 33 Quellen (Reuters 28, Investing.com 28, WSJ 26),
 Zeitraum 16.12.2025 bis 24.11.2026.
 
-**Labeling:** von Hand durch den Autor gemäss `nlp/LABELING.md` (positive / neutral / negative aus
-Sicht des Aktionärs). Bewusst nicht mit FinBERT oder einem LLM, da diese Modelle auf dem Set
-verglichen werden; ein modellgeneriertes Label würde das labelnde Modell bevorteilen.
-Verteilung: *[nach Labeling eintragen: `python -m nlp.label_tool --check`]*
+**Labeling:** durch Claude (Opus 5.5) gemäss `nlp/LABELING.md` (positive / neutral / negative aus
+Sicht des Aktionärs, im Zweifel neutral). Verglichen werden FinBERT (V1) und OpenAI (V2, optional
+V3 Few-shot); Claude wurde aus Kostengründen nicht in den Vergleich aufgenommen. Dadurch bewertet
+kein verglichenes Modell sich selbst. Verteilung: **44 positive (30 %), 66 neutral (45 %),
+36 negative (25 %)**. Wegen der ungleichen Verteilung wird Macro-F1 statt Accuracy verwendet.
 
 **Einschränkungen:**
 - **Ungleiche Abdeckung:** Alle 20 SMI-Titel sind vertreten, aber zu Alcon (1), Geberit (1),
@@ -48,8 +49,11 @@ Verteilung: *[nach Labeling eintragen: `python -m nlp.label_tool --check`]*
   (z. B. Galdermas Kauf von ZO Skin Health). Die Headlines sind dadurch nicht ganz unabhängig.
 - **Nicht exakt reproduzierbar:** Tavily liefert bei wiederholten Suchen leicht andere Treffer.
   Massgebend ist deshalb die eingecheckte CSV, nicht ein erneuter Lauf des Skripts.
-- **Ein einzelner Annotator:** keine Inter-Annotator-Übereinstimmung; optional wird ein Teil nach
-  einigen Tagen erneut gelabelt (Selbstkonsistenz).
+- **Modell als Annotator:** Die Referenz stammt von einem LLM, nicht von einem Menschen. Ein
+  LLM-Label liegt näher an der Urteilsweise eines anderen LLM (OpenAI) als an der von FinBERT;
+  das kann V2 leicht bevorteilen. Abhilfe: eine Stichprobe (20–30 Headlines) vom Autor von Hand
+  labeln und die Übereinstimmung mit den Claude-Labels angeben.
+- **Ein einzelner Annotator:** keine Inter-Annotator-Übereinstimmung.
 ## 6. Lösungsansatz
 ### 6.1 Architektur
 ### 6.2 Fundamental-Agent

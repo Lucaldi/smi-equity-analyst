@@ -39,7 +39,7 @@ python -c "import torch; print(torch.__version__, torch.cuda.is_available())"
 | `TAVILY_API_KEY` | News von Qualitätsmedien (Reuters, Bloomberg, FT …); leer = nur yfinance |
 | `LLM_PROVIDER`, `LLM_MODEL` | LLM für die Agenten (`openai` \| `anthropic`) |
 | `SENTIMENT_BACKEND` | `llm` (Standard) oder `finbert` |
-| `SENTIMENT_LLM_PROVIDER` | Anbieter für das Sentiment-LLM: `openai` \| `anthropic` |
+| `SENTIMENT_LLM_PROVIDER` | Anbieter für das Sentiment-LLM: `openai` (Standard und im H2-Vergleich) |
 | `SENTIMENT_LLM_MODEL` | Modell für das Sentiment-LLM (leer = `LLM_MODEL`) |
 
 ### Cache
@@ -54,7 +54,7 @@ zusätzlichen API-Kosten. Zum Neuberechnen den betreffenden Cache-Eintrag lösch
 python main.py --ticker NESN.SW --trace      # ein Titel, Agentenschritte sichtbar
 python main.py --all                         # alle SMI-Titel
 python -m eval.run_eval                      # Variante A (Single-Agent) vs. B (Multi-Agent)
-python -m nlp.compare_sentiment              # Sentiment-Vergleich V1–V4 (H2)
+python -m nlp.compare_sentiment              # Sentiment-Vergleich FinBERT vs. OpenAI (H2)
 pytest
 ```
 
@@ -66,7 +66,7 @@ pytest
 | `agents/` | Fundamental-, News- und Supervisor-Agent |
 | `tools/` | Deterministische Tools: Kennzahlen, Multiples, News-Fetch, Sentiment-Classifier |
 | `graph/` | LangGraph-State und Graph-Definition |
-| `nlp/` | Vergleich der Sentiment-Varianten (FinBERT, OpenAI, Claude) und gelabelte SMI-Headlines |
+| `nlp/` | Vergleich der Sentiment-Varianten (FinBERT, OpenAI) und gelabelte SMI-Headlines |
 | `eval/` | Evaluation Single- vs. Multi-Agent |
 | `docs/` | Projektbericht |
 | `data/` | Lokale Daten und Cache (nicht im Repo) |

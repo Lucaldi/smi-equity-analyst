@@ -32,12 +32,12 @@ Details: `SCOPE.md`. Fortschritt: `DEVLOG.md`.
 - Nur englische Headlines (FinBERT ist ein englisches Modell).
 
 ## News-Sentiment
-- **Kein Training, kein Fine-tuning.** Standard im News-Agent: LLM via API, Anbieter (OpenAI oder
-  Claude) wählbar über `.env` (`SENTIMENT_BACKEND`, `SENTIMENT_LLM_PROVIDER`).
+- **Kein Training, kein Fine-tuning.** Standard im News-Agent: OpenAI via API
+  (`SENTIMENT_BACKEND=llm`, `SENTIMENT_LLM_PROVIDER=openai`).
 - Vergleich für H2 in `nlp/compare_sentiment.py`: V1 FinBERT `ProsusAI/finbert` (vortrainiert, nur
-  Inferenz), V2 OpenAI Zero-shot, V3 Claude Zero-shot, V4 optional Few-shot.
-- Testset: ca. 150 selbst gelabelte SMI-Headlines in `nlp/label_smi_headlines.csv`.
-  **Nicht** Financial PhraseBank (FinBERT wurde darauf trainiert → Data Leakage).
+  Inferenz), V2 OpenAI Zero-shot, V3 optional OpenAI Few-shot. **Claude nicht im Vergleich** (Kosten).
+- Testset: 146 SMI-Headlines in `nlp/label_smi_headlines.csv`, Labels von Claude gesetzt (nicht
+  im Vergleich → kein Zirkelschluss). **Nicht** Financial PhraseBank (FinBERT darauf trainiert → Data Leakage).
 - Metriken: Macro-F1, Kosten und Latenz pro Headline, Konsistenz über wiederholte Läufe.
 - Sentiment-Vorhersagen werden als JSON in `data/cache/` gecacht.
 

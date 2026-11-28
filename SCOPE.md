@@ -49,7 +49,7 @@ Ein Multi-Agenten-System (MAS) analysiert ein Unternehmen aus dem SMI anhand sei
 | # | Frage | Metrik | Erfolgskriterium |
 |---|---|---|---|
 | H1 | Extrahiert der Fundamental-Agent die Kennzahlen korrekt aus den Geschäftsberichten? | Anteil Kennzahlen mit Abweichung ≤ 2 % zu yfinance | ≥ 90 % |
-| H2 | Welches Modell bewertet News-Sentiment am besten? | Macro-F1, Kosten und Latenz pro Headline, Konsistenz auf ca. 150 eigenen SMI-Headlines | Standard-LLM (V2 oder V3) Macro-F1 ≥ FinBERT (V1) |
+| H2 | Welches Modell bewertet News-Sentiment am besten? | Macro-F1, Kosten und Latenz pro Headline, Konsistenz auf ca. 150 eigenen SMI-Headlines | OpenAI (V2) Macro-F1 ≥ FinBERT (V1) |
 | H3 | Ist das Multi-Agenten-System faktentreuer als ein Single-Agent? | Anteil korrekter Zahlen im Memo | MAS > Single-Agent |
 | H4 | Liefert das System konsistente Urteile? | Gleiches Gesamturteil in 3 Läufen pro Titel | ≥ 80 % der Titel |
 | H5 | Ist das System praxistauglich? | Laufzeit und Kosten pro Analyse | < 5 min, < 0.50 CHF |
@@ -87,18 +87,20 @@ Die Schwellenwerte sind Zielwerte. Werden sie verfehlt, wird das im Bericht anal
 
 Die Bewertung jeder News (positiv / neutral / negativ) ist der zentrale NLP-Baustein des News-Agents.
 **Es wird kein Modell trainiert oder fine-getuned.** Standard im News-Agent ist ein LLM via API;
-der Anbieter (OpenAI oder Claude) ist über `.env` wählbar. Für H2 verglichen werden:
+Standard ist OpenAI. Für H2 verglichen werden:
 
 | Variante | Modell | Art |
 |---|---|---|
 | V1 | FinBERT (`ProsusAI/finbert`) | vortrainiert, nur Inferenz (lokal, CPU) |
 | V2 | OpenAI | Zero-shot |
-| V3 | Claude | Zero-shot |
-| V4 (optional) | bestes LLM aus V2/V3 | Few-shot |
+| V3 (optional) | OpenAI | Few-shot |
 
-**Testset:** ca. 150 selbst gelabelte Headlines zu SMI-Titeln in `nlp/label_smi_headlines.csv`.
-Financial PhraseBank wird bewusst **nicht** verwendet: FinBERT wurde darauf trainiert, ein Test
-darauf wäre Data Leakage und würde V1 bevorteilen.
+Claude wird aus Kostengründen nicht verglichen.
+
+**Testset:** 146 gelabelte Headlines zu SMI-Titeln in `nlp/label_smi_headlines.csv`. Die Labels
+hat Claude gemäss `nlp/LABELING.md` gesetzt, also ein Modell, das nicht im Vergleich steht
+(kein Zirkelschluss). Financial PhraseBank wird bewusst **nicht** verwendet: FinBERT wurde
+darauf trainiert, ein Test darauf wäre Data Leakage und würde V1 bevorteilen.
 
 **Metriken:**
 - Macro-F1 (zusätzlich Confusion Matrix)
@@ -151,7 +153,7 @@ smi-equity-analyst/
 │   ├── state.py
 │   └── graph.py
 ├── nlp/
-│   ├── compare_sentiment.py    # Vergleich V1–V4 (lokal, CPU)
+│   ├── compare_sentiment.py    # Vergleich FinBERT vs. OpenAI (lokal, CPU)
 │   └── label_smi_headlines.csv
 ├── eval/
 │   ├── run_eval.py             # Variante A vs. B
@@ -178,7 +180,7 @@ Jeder Graph-Knoten protokolliert Start, Tool-Aufrufe, Zwischenergebnis und Dauer
 |---|---|
 | Mo 23.11. | Repo auf GitHub, VS Code + Claude Code eingerichtet |
 | Di 24.11. | Fundamental-Agent für Nestlé end-to-end (PDF → Docling → Kennzahlen → Validierung) |
-| Mi 25.11. | News-Agent, SMI-Headlines labeln, Sentiment-Vergleich (FinBERT, OpenAI, Claude) |
+| Mi 25.11. | News-Agent, SMI-Headlines labeln, Sentiment-Vergleich (FinBERT, OpenAI) |
 | Do 26.11. | Supervisor, End-to-End-Lauf, Single-Agent-Baseline; Skalierung auf 5 Titel mit PDF, Rest via yfinance |
 | Fr 27.11. | Evaluation, Resultate, Grafiken |
 | Sa 28.11. | Bericht (docs/BERICHT.md), Video aufnehmen |

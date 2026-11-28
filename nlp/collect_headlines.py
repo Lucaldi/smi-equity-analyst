@@ -5,8 +5,8 @@ Bewertungs-Blogs plus Tavily auf englischsprachigen Qualitätsmedien, Relevanzfi
 Duplikaterkennung. Damit entspricht das Testset dem, was der Agent im Betrieb sieht.
 
 Pro Titel höchstens `--per-ticker` Headlines (ausgewogen über den SMI); Duplikate auch über
-Titel hinweg entfernt. Die Spalte `label` bleibt leer: Die Labels setzt ein Mensch
-(siehe nlp/LABELING.md), weder FinBERT noch ein LLM, da beide Teil des Vergleichs sind.
+Titel hinweg entfernt. Die Spalte `label` bleibt leer; gelabelt wird separat
+(siehe nlp/LABELING.md), nie mit einem der verglichenen Modelle (FinBERT, OpenAI).
 
 Aufruf:
     python -m nlp.collect_headlines [--per-ticker 8] [--lookback-days 365] [--force]
