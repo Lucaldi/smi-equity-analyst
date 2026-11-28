@@ -38,6 +38,7 @@ Sicht des Aktionärs, im Zweifel neutral). Verglichen werden FinBERT (V1) und Op
 V3 Few-shot); Claude wurde aus Kostengründen nicht in den Vergleich aufgenommen. Dadurch bewertet
 kein verglichenes Modell sich selbst. Verteilung: **44 positive (30 %), 66 neutral (45 %),
 36 negative (25 %)**. Wegen der ungleichen Verteilung wird Macro-F1 statt Accuracy verwendet.
+Der Autor hat alle Labels durchgesehen (`python -m nlp.label_tool --list`) und keine korrigiert.
 
 **Einschränkungen:**
 - **Ungleiche Abdeckung:** Alle 20 SMI-Titel sind vertreten, aber zu Alcon (1), Geberit (1),
@@ -51,8 +52,8 @@ kein verglichenes Modell sich selbst. Verteilung: **44 positive (30 %), 66 neutr
   Massgebend ist deshalb die eingecheckte CSV, nicht ein erneuter Lauf des Skripts.
 - **Modell als Annotator:** Die Referenz stammt von einem LLM, nicht von einem Menschen. Ein
   LLM-Label liegt näher an der Urteilsweise eines anderen LLM (OpenAI) als an der von FinBERT;
-  das kann V2 leicht bevorteilen. Abhilfe: eine Stichprobe (20–30 Headlines) vom Autor von Hand
-  labeln und die Übereinstimmung mit den Claude-Labels angeben.
+  das kann V2 leicht bevorteilen. Die Durchsicht durch den Autor mildert das, ist aber keine
+  unabhängige Zweitannotation (der Autor sah die Labels bereits).
 - **Ein einzelner Annotator:** keine Inter-Annotator-Übereinstimmung.
 ## 6. Lösungsansatz
 ### 6.1 Architektur
